@@ -12,9 +12,9 @@ namespace LemonadeStandv2
         {
             Game game = new Game();
             game.Start();
-            Day day = new Day();
-            Console.WriteLine(day.customers.Count());
-            Console.ReadLine();
+           // Day day = new Day();
+            //Console.WriteLine(day.customers.Count());
+           // Console.ReadLine();
 
         }
     }
