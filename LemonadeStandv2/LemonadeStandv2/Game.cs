@@ -9,7 +9,6 @@ namespace LemonadeStandv2
     public class Game
     {
         public int choice;
-
         Player player;
         Weather weather;
 
@@ -18,6 +17,7 @@ namespace LemonadeStandv2
             player = new Player();
             weather = new Weather();
         }
+
         public void Start()
         {
             Console.WriteLine("Please enter your name.");
@@ -25,8 +25,6 @@ namespace LemonadeStandv2
             Console.WriteLine("Welcome to {0}"+ "'s Lemonade Stand!!", player.name);
             Console.ReadLine();
             Menu();
-           
-
         }
 
         public void End()
@@ -39,8 +37,8 @@ namespace LemonadeStandv2
         {
             Console.WriteLine("What would you like to do?");
             Console.WriteLine();
-            Console.WriteLine("1 Check the forcast?");
-            Console.WriteLine("2 Purchase supplies?");
+            Console.WriteLine("1 Check the forcast....");
+            Console.WriteLine("2 Purchase supplies to stock up for the day...");
             Console.WriteLine("3 Exit the game.");
             choice = Convert.ToInt32(Console.ReadLine());
 

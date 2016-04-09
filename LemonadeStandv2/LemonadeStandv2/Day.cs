@@ -6,12 +6,7 @@ using System.Threading.Tasks;
 
 namespace LemonadeStandv2
 {
-    public class Store
+    class Day
     {
-        int lemons;
-        int paperCups;
-        int cupsOfSugar;
-        int iceCubes;
-
     }
 }
