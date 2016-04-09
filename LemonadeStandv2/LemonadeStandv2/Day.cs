@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace LemonadeStandv2
 {
-    class Day
+    public class Day
     {
+        
+        public int numberOfCustomers;
+        public List<int> customers;
+
+        public Day()
+        {
+            customers = new List<int>();
+        }
+       
     }
 }

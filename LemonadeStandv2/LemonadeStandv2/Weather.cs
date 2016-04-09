@@ -11,11 +11,12 @@ namespace LemonadeStandv2
     public int temperature;
     string weather;
     int chanceOfPrecipitation;
+    Day day;
 
 
     public Weather()
     {
-
+            day = new Day();
     }
 
     public void GenerateForeCast()
@@ -41,6 +42,7 @@ namespace LemonadeStandv2
             Console.WriteLine("The temperature for today is " + temperature + " degrees outside and " + weather);
             Console.ReadLine();
         }
+             //temperature;
 
     }
 
@@ -53,31 +55,56 @@ namespace LemonadeStandv2
         {
             case 1:
                 chanceOfPrecipitation = rand.Next(1, 80);
-                weather = "cloudy with a " + chanceOfPrecipitation + "% chance of rain";
+                weather = "cloudy with a " + chanceOfPrecipitation + "% chance of rain...";
                 break;
             case 2:
-                weather = "rainy";
+                weather = "rainy...";
                 break;
             case 3:
                 chanceOfPrecipitation = rand.Next(1, 20);
-                weather = "sunny with a " + chanceOfPrecipitation + "% chance of rain";
+                weather = "sunny with a " + chanceOfPrecipitation + "% chance of rain...";
                 break;
             case 4:
                 chanceOfPrecipitation = rand.Next(1, 30);
-                weather = "breezy with a " + chanceOfPrecipitation + "% chance of rain";
+                weather = "breezy with a " + chanceOfPrecipitation + "% chance of rain...";
                 break;
             case 5:
                 chanceOfPrecipitation = rand.Next(1, 60);
-                weather = "hazy with a " + chanceOfPrecipitation + "% chance of rain";
+                weather = "hazy with a " + chanceOfPrecipitation + "% chance of rain...";
                 break;
 
         }
-
+           
     }
-    //public void DisplayForeCast()
-    //{
-    //        Console.WriteLine("TEMP: "+ temperature + " degrees");
-    //}
-}
+
+    public void PotentialCustomers()
+    {
+            Random rand = new Random();
+
+            if (temperature <= 70)
+            {
+                day.numberOfCustomers = rand.Next(25, 40);
+            }
+            else if (temperature > 70 && temperature < 90)
+            {
+                day.numberOfCustomers = rand.Next(50, 80);
+            }
+            else
+            {
+                day.numberOfCustomers = rand.Next(80, 100);
+            }
+            for (int cust = 0; cust < day.numberOfCustomers; cust++)
+            {
+                day.customers.Add(1);
+            }
+    }
+
+        public void GoToStore()
+        {
+            Console.WriteLine("Now that you have an idea of how the weather will be what do ya say we got grab some supplies.");
+           // PurchaseSupplies();
+        }
+   
+    }
 
 }
