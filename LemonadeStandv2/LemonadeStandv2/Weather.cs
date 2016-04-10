@@ -9,8 +9,8 @@ namespace LemonadeStandv2
     public class Weather
     { 
     public int temperature;
-    string weather;
-    int chanceOfPrecipitation;
+    public string weather;
+    public int chanceOfPrecipitation;
     Day day;
 
 
@@ -27,21 +27,21 @@ namespace LemonadeStandv2
         if (temperature <= 75)
         {
             RainOrShine();
-            Console.WriteLine("The temperature for today is " + temperature + " degrees outside and " + weather);
+            Console.WriteLine("The temperature for today is a high of " + temperature + " degrees outside and " + weather);
             PotentialCustomers();
             Console.ReadLine();
         }
         else if (temperature > 75 && temperature < 90)
         {
             RainOrShine();
-            Console.WriteLine("The temperature for today is " + temperature + " degrees outside and " + weather);
+            Console.WriteLine("The temperature for today is a high of " + temperature + " degrees outside and " + weather);
             PotentialCustomers();
             Console.ReadLine();
         }
         else
         {
             RainOrShine();
-            Console.WriteLine("The temperature for today is " + temperature + " degrees outside and " + weather);
+            Console.WriteLine("The temperature for today is a high of " + temperature + " degrees outside and " + weather);
             PotentialCustomers();
             Console.ReadLine();
         }
@@ -79,9 +79,8 @@ namespace LemonadeStandv2
         }
            
     }
-
-    public void PotentialCustomers()
-    {
+        public int PotentialCustomers()
+        {
             Random rand = new Random();
 
             if (temperature <= 70)
@@ -99,8 +98,12 @@ namespace LemonadeStandv2
             for (int cust = 0; cust < day.numberOfCustomers; cust++)
             {
                 day.customers.Add(1);
+
             }
-    }
+            return temperature;
+        }
+
+
 
         public void GoToStore()
         {

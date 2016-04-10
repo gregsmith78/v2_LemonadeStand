@@ -11,11 +11,13 @@ namespace LemonadeStandv2
         public int choice;
         Player player;
         Weather weather;
+        Day day;
 
         public Game()
         {
             player = new Player();
             weather = new Weather();
+            day = new Day();
         }
 
         public void Start()
@@ -46,7 +48,7 @@ namespace LemonadeStandv2
             {
                 case 1:
                     weather.GenerateForeCast();
-                    //Console.WriteLine();
+                    //weather.PotentialCustomers();
                     break;
                 case 2:
                     //PurchaseSupplies();
