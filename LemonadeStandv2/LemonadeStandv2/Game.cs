@@ -12,12 +12,14 @@ namespace LemonadeStandv2
         Player player;
         Weather weather;
         Day day;
+        Store store;
 
         public Game()
         {
             player = new Player();
             weather = new Weather();
             day = new Day();
+            store = new Store();
         }
 
         public void Start()
@@ -51,6 +53,8 @@ namespace LemonadeStandv2
                     //weather.PotentialCustomers();
                     break;
                 case 2:
+                    store.DisplayPrices();
+                    store.PurchaseCups();
                     //PurchaseSupplies();
                     break;
                 case 3:

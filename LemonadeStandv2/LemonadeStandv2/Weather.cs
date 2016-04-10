@@ -27,21 +27,21 @@ namespace LemonadeStandv2
         if (temperature <= 75)
         {
             RainOrShine();
-            Console.WriteLine("The temperature for today is a high of " + temperature + " degrees outside and " + weather);
+            Console.WriteLine("Today's forecast is a high of " + temperature + " degrees outside and " + weather);
             PotentialCustomers();
             Console.ReadLine();
         }
         else if (temperature > 75 && temperature < 90)
         {
             RainOrShine();
-            Console.WriteLine("The temperature for today is a high of " + temperature + " degrees outside and " + weather);
+            Console.WriteLine("Today's forecast is a high of " + temperature + " degrees outside and " + weather);
             PotentialCustomers();
             Console.ReadLine();
         }
         else
         {
             RainOrShine();
-            Console.WriteLine("The temperature for today is a high of " + temperature + " degrees outside and " + weather);
+            Console.WriteLine("Today's forecast is a high of " + temperature + " degrees outside and " + weather);
             PotentialCustomers();
             Console.ReadLine();
         }
@@ -107,7 +107,7 @@ namespace LemonadeStandv2
 
         public void GoToStore()
         {
-            Console.WriteLine("Now that you have an idea of how the weather will be what do ya say we got grab some supplies.");
+            Console.WriteLine("Now that you have an idea of how the weather will be what do ya say we go grab some supplies.");
            // PurchaseSupplies();
         }
    
