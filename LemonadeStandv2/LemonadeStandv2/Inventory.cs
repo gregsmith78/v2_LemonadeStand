@@ -12,5 +12,79 @@ namespace LemonadeStandv2
         public double sugar;
         public double cups;
         public double ice;
+        public double cupsSold;
+        public string input;
+        public char response;
+       
+
+
+        public Inventory()
+        {
+                
+        }
+
+        public void SubtractFromStock(Player player, Store store)
+        {
+            //Game game = new Game();
+
+            for (int drinks = 0; drinks < player.inventory.cupsSold; drinks++)
+            {
+                player.inventory.lemons -= .05;
+                player.inventory.cups -= 1;
+                player.inventory.sugar -= 1;
+                player.inventory.ice -= 1;
+            }
+        }
+
+           //     if (player.inventory.lemons < 1 || player.inventory.cups < 1 || player.inventory.sugar < 1 || player.inventory.ice < 1)
+           //     {
+
+           //         Console.WriteLine("You ran out of inventory. :(");
+           //         Console.WriteLine("Sorry...better luck tomorrow...");
+           //         Console.ReadLine();
+           //         Console.WriteLine("Would you like to continue? Yes or No?");
+           //         input = Console.ReadLine();
+           //         response = Convert.ToChar(input);
+
+           //         while(response == 'Y')
+           //         {
+                        
+           //             game.weather.GenerateForeCast();
+           //             store.DisplayPrices();
+           //             Console.WriteLine();
+           //             store.PurchaseCups(player);
+           //             store.PurchaseLemons(player);
+           //             store.PurchaseSugar(player);
+           //             store.PurchaseIce(player);
+           //             store.SetPriceForLemonade(player);
+           //             game.weather.day.CustomersBuying(player, store);
+           //             Console.WriteLine(player.wallet);
+           //             break;    
+
+           //         }
+           //         game.End();
+           //         Environment.Exit(0);
+                    
+                    
+           //     }
+               
+           //}
+           
+        
+        public void ReturnInventoryAfterSales(Player player)
+        {
+            double cupsFloor = Math.Floor(player.inventory.cups);
+            double lemonFloor = Math.Floor(player.inventory.lemons);
+            double sugarFloor = Math.Floor(player.inventory.sugar);
+           
+            Console.WriteLine("This is what you have left in your inventory.");
+            Console.WriteLine("Cups: " + cupsFloor);
+            Console.WriteLine("Lemons: " + lemonFloor);
+            Console.WriteLine("Cups of Sugar: " + sugarFloor);
+            Console.WriteLine("All you ice has melted...");
+
+            player.inventory.ice = 0;
+        }
     }
+
 }

@@ -123,6 +123,7 @@ namespace LemonadeStandv2
             Console.WriteLine("Your cups and lemons are taken care of. Now we need sugar...How many cups of sugar would you like to buy?");
             Console.WriteLine();
             try
+
             {
                 sugarInput = Convert.ToInt32(Console.ReadLine());
             }
@@ -152,7 +153,7 @@ namespace LemonadeStandv2
         }
         public double PurchaseIce(Player player)
         {
-
+        
             Console.WriteLine("And lastly we need our ice...how many cubes would you like to buy?");
             Console.WriteLine();
             try
@@ -183,14 +184,31 @@ namespace LemonadeStandv2
             return player.wallet;
 
         }
+
         public double SetPriceForLemonade(Player player)
         {
             Console.WriteLine("You now have your ingredients to make your lemonade!");
             Console.WriteLine("How much would you like to charge for a cup?");
             Console.WriteLine("Please enter your price in decimal form...");
             Console.WriteLine("and remember to keep in mind that the weather will be a factor in your sales...");
+            Console.WriteLine();
+          
 
             lemonadeInput = Double.Parse(Console.ReadLine());
+          
+            if (lemonadeInput > .0 && lemonadeInput < 1.50)
+            {
+                Console.WriteLine("Alright, you set your price for {0:C}", lemonadeInput);
+                Console.WriteLine("Let's see how many customers liked your lemonade!");
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine("That price is too high...try again please.");
+                SetPriceForLemonade(player);
+                Console.ReadLine();
+            }
+
             chargePerLemonade = lemonadeInput;
 
             return chargePerLemonade;

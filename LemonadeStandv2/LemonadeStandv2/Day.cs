@@ -20,18 +20,19 @@ namespace LemonadeStandv2
         public double CustomersBuying(Player player, Store store)
         {
             Random rand = new Random();
-           
 
-            for (int potentialCust = 0; potentialCust < numberOfCustomers; potentialCust++)
+           for (int potentialCust = 0; potentialCust < numberOfCustomers; potentialCust++)
             {
                 int buyFactor = rand.Next(1, 10);
+
                 if (store.chargePerLemonade > 0 && store.chargePerLemonade < .50)
                 {
                     if (buyFactor < 6)
                     { 
-
                     player.wallet += store.chargePerLemonade;
                     Console.WriteLine("bought lemonade.");
+                    player.inventory.cupsSold += 1;
+                    //player.inventory.SubtractFromStock(player, store);
                     }
                     else
                     {

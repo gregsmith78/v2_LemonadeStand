@@ -87,29 +87,26 @@ namespace LemonadeStandv2
 
             if (temperature <= 70)
             {
-                day.numberOfCustomers = rand.Next(25, 40);
+              day.numberOfCustomers = rand.Next(25, 40);
             }
             else if (temperature > 70 && temperature < 90)
             {
-                day.numberOfCustomers = rand.Next(50, 80);
+                day.numberOfCustomers = rand.Next(40, 80);
             }
             else
             {
                 day.numberOfCustomers = rand.Next(80, 100);
             }
-           // for (int cust = 0; cust < day.numberOfCustomers; cust++)
-           // {
-               // day.customers.Add(1);
-
-           // }
+          
             return day.numberOfCustomers;
         }
 
 
 
-        public void GoToStore()
+        public void GoToStore(Store store)
         {
             Console.WriteLine("Now that you have an idea of how the weather will be what do ya say we go grab some supplies.");
+            store.DisplayPrices();
         }
    
     }

@@ -12,14 +12,17 @@ namespace LemonadeStandv2
         public Player player;
         public Weather weather;
         public Store store;
-       // public Day day;
+       
+        
 
         public Game()
         {
             player = new Player();
             weather = new Weather();
             store = new Store();
-           // day = new Day();
+           
+            
+
         }
 
         public void Start()
@@ -41,7 +44,6 @@ namespace LemonadeStandv2
         {
             Console.WriteLine("What would you like to do?");
             Console.WriteLine();
-
             Console.WriteLine("1 Check the forcast....");
             Console.WriteLine("2 Purchase supplies to stock up for the day...");
             Console.WriteLine("3 Exit the game.");
@@ -51,11 +53,10 @@ namespace LemonadeStandv2
             {
                 case 1:
                     weather.GenerateForeCast();
-                    weather.PotentialCustomers();
+                    weather.GoToStore(store);
                     break;
                 case 2:
                     weather.GenerateForeCast();
-                    //weather.PotentialCustomers();
                     store.DisplayPrices();
                     Console.WriteLine();
                     store.PurchaseCups(player);
@@ -64,6 +65,8 @@ namespace LemonadeStandv2
                     store.PurchaseIce(player);
                     store.SetPriceForLemonade(player);
                     weather.day.CustomersBuying(player, store);
+                    player.inventory.SubtractFromStock(player, store);
+                    player.inventory.ReturnInventoryAfterSales(player);
                     Console.WriteLine(player.wallet);
                     break;
                 case 3:

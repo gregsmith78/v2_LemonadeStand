@@ -11,11 +11,13 @@ namespace LemonadeStandv2
         public string name;
         public double wallet = 15.00;
         public Inventory inventory;
+        //Game game;
        
 
         public Player()
         {
             inventory = new Inventory();
+            //game = new Game();
             
             
         }
