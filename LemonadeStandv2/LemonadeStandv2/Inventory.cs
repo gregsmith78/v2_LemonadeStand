@@ -8,9 +8,9 @@ namespace LemonadeStandv2
 {
     public class Inventory
     {
-        public int lemons;
-        public int sugar;
-        public int cups;
-        public int ice;
+        public double lemons;
+        public double sugar;
+        public double cups;
+        public double ice;
     }
 }

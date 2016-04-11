@@ -9,12 +9,14 @@ namespace LemonadeStandv2
     public class Player
     {
         public string name;
-        public decimal wallet = 15.00M;
-        Inventory inventory;
+        public double wallet = 15.00;
+        public Inventory inventory;
+        //public Store store;
 
         public Player()
         {
             inventory = new Inventory();
+            //store = new Store();
             
         }
     }

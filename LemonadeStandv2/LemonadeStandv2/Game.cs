@@ -9,16 +9,14 @@ namespace LemonadeStandv2
     public class Game
     {
         public int choice;
-        Player player;
-        Weather weather;
-       // Day day;
-        Store store;
+        public Player player;
+        public Weather weather;
+        public Store store;
 
         public Game()
         {
             player = new Player();
             weather = new Weather();
-            //day = new Day();
             store = new Store();
         }
 
@@ -50,16 +48,19 @@ namespace LemonadeStandv2
             {
                 case 1:
                     weather.GenerateForeCast();
-                    //weather.PotentialCustomers();
+                    weather.PotentialCustomers();
                     break;
                 case 2:
                     weather.GenerateForeCast();
                     store.DisplayPrices();
-                    store.PurchaseCups();
-                    store.PurchaseLemons();
-                    store.PurchaseSugar();
-                    store.PurchaseIce();
-                    //PurchaseSupplies();
+                    Console.WriteLine();
+                    store.PurchaseCups(player);
+                    store.PurchaseLemons(player);
+                    store.PurchaseSugar(player);
+                    store.PurchaseIce(player);
+                    store.SetPriceForLemonade(player);
+                    store.CustomersBuying(player);
+                    Console.WriteLine(player.wallet);
                     break;
                 case 3:
                     End();

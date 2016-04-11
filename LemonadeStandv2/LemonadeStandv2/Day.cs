@@ -8,18 +8,32 @@ namespace LemonadeStandv2
 {
     public class Day
     {
-       // Weather weather;
+       
         
         public int numberOfCustomers;
-        public List<int> customers;
+        public Store store;
+
 
         public Day()
         {
-           // weather = new Weather();
-            customers = new List<int>();
-           // numberOfCustomers = weather.temperature;
-        }
 
-       
+            store = new Store();
+           
+           
+        }
+        //public double CustomersBuying()
+        //{
+        //    foreach (int customer in customers)
+        //    {
+        //        if (store.chargePerLemonade > 0 && store.chargePerLemonade < .50)
+        //        {
+        //            store.player.wallet += store.chargePerLemonade;
+        //        }
+        //    }
+        //    return store.player.wallet;
+        //}
+
+
+
     }
 }

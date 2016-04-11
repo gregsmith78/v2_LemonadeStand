@@ -11,12 +11,14 @@ namespace LemonadeStandv2
     public int temperature;
     public string weather;
     public int chanceOfPrecipitation;
-    Day day;
+    public Day day;
+    
 
 
     public Weather()
     {
             day = new Day();
+            
     }
 
     public void GenerateForeCast()
@@ -95,12 +97,12 @@ namespace LemonadeStandv2
             {
                 day.numberOfCustomers = rand.Next(80, 100);
             }
-            for (int cust = 0; cust < day.numberOfCustomers; cust++)
-            {
-                day.customers.Add(1);
+           // for (int cust = 0; cust < day.numberOfCustomers; cust++)
+           // {
+               // day.customers.Add(1);
 
-            }
-            return temperature;
+           // }
+            return day.numberOfCustomers;
         }
 
 
@@ -108,7 +110,6 @@ namespace LemonadeStandv2
         public void GoToStore()
         {
             Console.WriteLine("Now that you have an idea of how the weather will be what do ya say we go grab some supplies.");
-           // PurchaseSupplies();
         }
    
     }

@@ -8,34 +8,35 @@ namespace LemonadeStandv2
 {
     public class Store
     {
-        public decimal paperCupsPrice = .02M;
-        public int paperCupInput;
-        public decimal paperCupAmount;
+        public double paperCupsPrice = .02;
+        public double paperCupInput;
+        public double paperCupAmount;
 
-        public decimal lemonsPrice = .03M;
-        public int lemonInput;
-        public decimal lemonAmount;
+        public double lemonsPrice = .10;
+        public double lemonInput;
+        public double lemonAmount;
 
-        public decimal cupsOfSugarPrice = .04M;
-        public int sugarInput;
-        public decimal sugarAmount;
+        public double cupsOfSugarPrice = .05;
+        public double sugarInput;
+        public double sugarAmount;
 
-        public decimal iceCubesPrice = .02M;
-        public int iceInput;
-        public decimal iceAmount;
+        public double iceCubesPrice = .02;
+        public double iceInput;
+        public double iceAmount;
 
-        public decimal updateWallet;
+        public double updateWallet;
+        public double lemonadeInput;
+        public double chargePerLemonade;
        
         
         
-        Player player;
-        Inventory inventory;
+          
         
 
         public Store() 
         {
-            player = new Player();
-            inventory = new Inventory();
+          
+           
         }
         public void DisplayPrices()
         {
@@ -50,10 +51,11 @@ namespace LemonadeStandv2
             Console.WriteLine("-------------------------------");
 
         }
-        public decimal PurchaseCups()
+        public double PurchaseCups(Player player)
         {
            
             Console.WriteLine("Let's start off with cups...How many cups would you like to buy?");
+            Console.WriteLine();
             try
             {
                 paperCupInput = Convert.ToInt32(Console.ReadLine());
@@ -61,27 +63,28 @@ namespace LemonadeStandv2
             catch(FormatException)
             {
                 Console.WriteLine("Please enter a valid number...");
-                PurchaseCups();
+                PurchaseCups(player);
             }
             if (player.wallet - (paperCupInput * paperCupsPrice) < 0)
             {
                 Console.WriteLine("Sorry, you don't have enough money to buy that much. Please try another amount.");
-                PurchaseCups();
+                PurchaseCups(player);
             }
             else 
             { 
                 paperCupAmount = paperCupInput * paperCupsPrice;
-                Console.WriteLine("You chose to buy " + paperCupInput + " cups for " + paperCupAmount);
+                Console.WriteLine("You chose to buy " + paperCupInput + " cups for {0:C}",  paperCupAmount);
                 updateWallet = player.wallet - paperCupAmount;
                 Console.WriteLine("You now have {0:C}", updateWallet + " left in your bank.");
-                inventory.cups = paperCupInput;
+                Console.WriteLine();
+                player.inventory.cups = paperCupInput;
                 player.wallet = updateWallet;
 
             }
             return player.wallet;
            
         }
-        public decimal PurchaseLemons()
+        public double PurchaseLemons(Player player)
         {
 
             Console.WriteLine("Let's go on to lemons. How many lemons would you like to buy?");
@@ -92,20 +95,21 @@ namespace LemonadeStandv2
             catch (FormatException)
             {
                 Console.WriteLine("Please enter a valid number...");
-                PurchaseLemons();
+                PurchaseLemons(player);
             }
             if (player.wallet - (lemonInput * lemonsPrice) + paperCupAmount < 0)
             {
                 Console.WriteLine("Sorry, you don't have enough money to buy that much. Please try another amount.");
-                PurchaseLemons();
+                PurchaseLemons(player);
             }
             else
             {
                 lemonAmount = lemonInput * lemonsPrice;
-                Console.WriteLine("You chose to buy " + lemonInput  + " lemons for " + lemonAmount);
+                Console.WriteLine("You chose to buy " + lemonInput  + " lemons for {0:C}", lemonAmount);
                 updateWallet = player.wallet - lemonAmount;
                 Console.WriteLine("You now have {0:C}", updateWallet + " left in your bank.");
-                inventory.lemons = lemonInput;
+                Console.WriteLine();
+                player.inventory.lemons = lemonInput;
                 player.wallet = updateWallet;
 
             }
@@ -113,10 +117,11 @@ namespace LemonadeStandv2
 
         }
 
-        public decimal PurchaseSugar()
+        public double PurchaseSugar(Player player)
         {
 
             Console.WriteLine("Your cups and lemons are taken care of. Now we need sugar...How many cups of sugar would you like to buy?");
+            Console.WriteLine();
             try
             {
                 sugarInput = Convert.ToInt32(Console.ReadLine());
@@ -124,30 +129,32 @@ namespace LemonadeStandv2
             catch (FormatException)
             {
                 Console.WriteLine("Please enter a valid number...");
-                PurchaseSugar();
+                PurchaseSugar(player);
             }
             if (player.wallet - (sugarInput * cupsOfSugarPrice) + paperCupAmount + lemonAmount < 0)
             {
                 Console.WriteLine("Sorry, you don't have enough money to buy that much. Please try another amount.");
-                PurchaseSugar();
+                PurchaseSugar(player);
             }
             else
             {
                 sugarAmount = sugarInput * cupsOfSugarPrice;
-                Console.WriteLine("You chose to buy " + sugarInput + " cups for " + sugarAmount);
+                Console.WriteLine("You chose to buy " + sugarInput + " cups for {0:C}", sugarAmount);
                 updateWallet = player.wallet - sugarAmount;
                 Console.WriteLine("You now have {0:C}", updateWallet + " left in your bank.");
-                inventory.sugar = sugarInput;
+                Console.WriteLine();
+                player.inventory.sugar = sugarInput;
                 player.wallet = updateWallet;
 
             }
             return player.wallet;
 
         }
-        public decimal PurchaseIce()
+        public double PurchaseIce(Player player)
         {
 
-            Console.WriteLine("And lastly we need our ice...how cubes would you like to buy?");
+            Console.WriteLine("And lastly we need our ice...how many cubes would you like to buy?");
+            Console.WriteLine();
             try
             {
                 iceInput = Convert.ToInt32(Console.ReadLine());
@@ -155,25 +162,52 @@ namespace LemonadeStandv2
             catch (FormatException)
             {
                 Console.WriteLine("Please enter a valid number...");
-                PurchaseIce();
+                PurchaseIce(player);
             }
             if (player.wallet - (iceInput * iceCubesPrice) + paperCupAmount + lemonAmount + sugarAmount < 0)
             {
                 Console.WriteLine("Sorry, you don't have enough money to buy that much. Please try another amount.");
-                PurchaseIce();
+                PurchaseIce(player);
             }
             else
             {
                 iceAmount = iceInput * iceCubesPrice;
-                Console.WriteLine("You chose to buy " + iceInput + " cubes of ice for " + iceAmount);
+                Console.WriteLine("You chose to buy " + iceInput + " cubes of ice for {0:C}", iceAmount);
                 updateWallet = player.wallet - iceAmount;
                 Console.WriteLine("You now have {0:C}", updateWallet + " left in your bank.");
-                inventory.ice = iceInput;
+                Console.WriteLine();
+                player.inventory.ice = iceInput;
                 player.wallet = updateWallet;
 
             }
             return player.wallet;
 
         }
+        public double SetPriceForLemonade(Player player)
+        {
+            Console.WriteLine("You now have your ingredients to make your lemonade!");
+            Console.WriteLine("How much would you like to charge for a cup?");
+            Console.WriteLine("Please enter your price in decimal form...");
+            Console.WriteLine("and remember to keep in mind that the weather will be a factor in your sales...");
+
+            lemonadeInput = Double.Parse(Console.ReadLine());
+            chargePerLemonade = lemonadeInput;
+
+            return chargePerLemonade;
+        }
+        public double CustomersBuying(Player player)
+        {
+            for (int potentialCust = 0; potentialCust < )
+            {
+                if (chargePerLemonade > 0 && chargePerLemonade < .50)
+                {
+                    player.wallet += chargePerLemonade;
+                }
+            }
+            return player.wallet;
+        }
+
+
+
     }
 }
