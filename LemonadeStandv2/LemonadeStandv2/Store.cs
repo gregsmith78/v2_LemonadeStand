@@ -195,17 +195,7 @@ namespace LemonadeStandv2
 
             return chargePerLemonade;
         }
-        public double CustomersBuying(Player player)
-        {
-            for (int potentialCust = 0; potentialCust < )
-            {
-                if (chargePerLemonade > 0 && chargePerLemonade < .50)
-                {
-                    player.wallet += chargePerLemonade;
-                }
-            }
-            return player.wallet;
-        }
+       
 
 
 

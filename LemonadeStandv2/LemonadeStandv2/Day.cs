@@ -11,27 +11,29 @@ namespace LemonadeStandv2
        
         
         public int numberOfCustomers;
-        public Store store;
+       // public Store store;
+        //public Weather weather;
 
 
         public Day()
         {
 
-            store = new Store();
+           // store = new Store();
+            //weather = new Weather();
            
            
         }
-        //public double CustomersBuying()
-        //{
-        //    foreach (int customer in customers)
-        //    {
-        //        if (store.chargePerLemonade > 0 && store.chargePerLemonade < .50)
-        //        {
-        //            store.player.wallet += store.chargePerLemonade;
-        //        }
-        //    }
-        //    return store.player.wallet;
-        //}
+        public double CustomersBuying(Player player, Store store)
+        {
+            for (int potentialCust = 0; potentialCust < numberOfCustomers; potentialCust++)
+            {
+                if (store.chargePerLemonade > 0 && store.chargePerLemonade < .50)
+                {
+                    player.wallet += store.chargePerLemonade;
+                }
+            }
+            return player.wallet;
+        }
 
 
 
