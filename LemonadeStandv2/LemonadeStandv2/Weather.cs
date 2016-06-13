@@ -23,6 +23,8 @@ namespace LemonadeStandv2
 
     public void GenerateForeCast()
     {
+        Console.ForegroundColor = ConsoleColor.Blue;
+            
         Random rand = new Random();
         temperature = rand.Next(60, 100);
 
@@ -54,7 +56,7 @@ namespace LemonadeStandv2
     public void RainOrShine()
     {
         Random rand = new Random();
-        int forecast = rand.Next(1, 5);
+        int forecast = rand.Next(1, 6);
 
         switch (forecast)
         {

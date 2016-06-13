@@ -54,10 +54,20 @@ namespace LemonadeStandv2
                 case 1:
                     weather.GenerateForeCast();
                     weather.GoToStore(store);
+                    store.PurchaseCups(player);
+                    store.PurchaseLemons(player);
+                    store.PurchaseSugar(player);
+                    store.PurchaseIce(player);
+                    store.SetPriceForLemonade(player);
+                    weather.day.CustomersBuying(player, store);
+                    player.inventory.SubtractFromStock(player, store);
+                    player.inventory.ReturnInventoryAfterSales(player);
+                    PlayAgain(player);
                     break;
                 case 2:
-                    weather.GenerateForeCast();
+                    //weather.GenerateForeCast();
                     store.DisplayPrices();
+                    store.AskForWeather(weather);
                     Console.WriteLine();
                     store.PurchaseCups(player);
                     store.PurchaseLemons(player);
@@ -67,7 +77,10 @@ namespace LemonadeStandv2
                     weather.day.CustomersBuying(player, store);
                     player.inventory.SubtractFromStock(player, store);
                     player.inventory.ReturnInventoryAfterSales(player);
-                    Console.WriteLine(player.wallet);
+                    PlayAgain(player);
+                   
+                   
+                    Console.WriteLine("You now have {0:C}",player.wallet);
                     break;
                 case 3:
                     End();
@@ -82,6 +95,35 @@ namespace LemonadeStandv2
 
             }
             
+        }
+        public void PlayAgain(Player player)
+        {
+            Console.WriteLine("Try again? Y for yes, N for no.");
+            string yesNo = Console.ReadLine();
+
+            if (yesNo == "Y" || yesNo == "y")
+            {
+                ContinuePlay();
+            }
+            else
+            {
+                End();
+            }
+        }
+        public void ContinuePlay()
+        {
+            store.DisplayPrices();
+            store.AskForWeather(weather);
+            Console.WriteLine();
+            store.PurchaseCups(player);
+            store.PurchaseLemons(player);
+            store.PurchaseSugar(player);
+            store.PurchaseIce(player);
+            store.SetPriceForLemonade(player);
+            weather.day.CustomersBuying(player, store);
+            player.inventory.SubtractFromStock(player, store);
+            player.inventory.ReturnInventoryAfterSales(player);
+            PlayAgain(player);
         }
     }
 

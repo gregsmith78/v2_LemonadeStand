@@ -12,27 +12,34 @@ namespace LemonadeStandv2
         public double sugar;
         public double cups;
         public double ice;
-        public double cupsSold;
+        public double boughtLemonade;
+        public double cupsNotSold = 0;
+        public double didNotBuy;
+        public double cupsSold = 0;
+        public double totalCustomers;
         public string input;
         public char response;
+       // Game game = new Game();
        
 
 
         public Inventory()
-        {
-                
-        }
+        {}
 
         public void SubtractFromStock(Player player, Store store)
         {
             //Game game = new Game();
 
-            for (int drinks = 0; drinks < player.inventory.cupsSold; drinks++)
+            for (int drinks = 0; drinks < player.inventory.boughtLemonade; drinks++)
             {
-                player.inventory.lemons -= .05;
+                player.inventory.lemons -= 1;
                 player.inventory.cups -= 1;
                 player.inventory.sugar -= 1;
                 player.inventory.ice -= 1;
+            }
+            if (player.inventory.lemons <= 0)
+            {
+                Console.WriteLine("Out of inventory...");
             }
         }
 
@@ -69,22 +76,32 @@ namespace LemonadeStandv2
            //     }
                
            //}
+           public void MeltedIce(Player player)
+           {
+            player.inventory.ice = 0;
+           }
            
         
         public void ReturnInventoryAfterSales(Player player)
         {
+            totalCustomers = (player.inventory.boughtLemonade) + (player.inventory.didNotBuy);
             double cupsFloor = Math.Floor(player.inventory.cups);
             double lemonFloor = Math.Floor(player.inventory.lemons);
             double sugarFloor = Math.Floor(player.inventory.sugar);
-           
+            //player.inventory.ice = 0;
+            Console.WriteLine(player.inventory.boughtLemonade + " out of " + totalCustomers + " customers bought lemonade today!");
             Console.WriteLine("This is what you have left in your inventory.");
             Console.WriteLine("Cups: " + cupsFloor);
             Console.WriteLine("Lemons: " + lemonFloor);
             Console.WriteLine("Cups of Sugar: " + sugarFloor);
-            Console.WriteLine("All you ice has melted...");
-
-            player.inventory.ice = 0;
+            MeltedIce(player);
+            Console.WriteLine("All your remaining ice has melted for the day...");
+            
+           
         }
+
+     
+       
     }
 
 }

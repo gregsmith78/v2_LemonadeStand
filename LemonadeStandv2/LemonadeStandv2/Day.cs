@@ -25,18 +25,17 @@ namespace LemonadeStandv2
             {
                 int buyFactor = rand.Next(1, 10);
 
-                if (store.chargePerLemonade > 0 && store.chargePerLemonade < .50)
+                if (store.chargePerLemonade > 0)
                 {
                     if (buyFactor < 6)
                     { 
                     player.wallet += store.chargePerLemonade;
                     Console.WriteLine("bought lemonade.");
-                    player.inventory.cupsSold += 1;
-                    //player.inventory.SubtractFromStock(player, store);
+                    player.inventory.boughtLemonade = player.inventory.cupsSold += 1;
                     }
                     else
                     {
-                       
+                        player.inventory.didNotBuy = player.inventory.cupsNotSold += 1;
                         Console.WriteLine("did not buy lemonade.");
                     }
                 }
